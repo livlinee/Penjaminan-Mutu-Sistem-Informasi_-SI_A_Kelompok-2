@@ -17,7 +17,7 @@
             <div class="left-group">
                 <div class="header-title">
                     <h1>Cyber Cafe</h1>
-                    <p>Home</p>
+                    <p>Dashboard</p>
                 </div>
             </div>
             <div class="user-icon"><i class="fa-regular fa-circle-user"></i></div>

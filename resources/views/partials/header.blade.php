@@ -17,22 +17,45 @@
         </div>
     </div>
 
+    {{-- 
+      =================================================
+      BAGIAN BANNER CAROUSEL YANG DIPERBARUI
+      =================================================
+    --}}
     <div class="mt-5 px-4">
-        @if ($featuredMentor)
+        {{-- Ganti $featuredMentor -> $featuredMentors --}}
+        @if ($featuredMentors->isNotEmpty())
+            {{-- Container untuk slide --}}
             <div class="relative bg-slate-900 text-white rounded-2xl shadow-lg h-40 overflow-hidden">
 
-                <div class="absolute left-0 top-0 h-full w-2/3 p-5 flex flex-col justify-center space-y-1">
-                    <p class="text-sm opacity-70">{{ $featuredMentor->jadwal_dan_waktu }}</p>
-                    <h2 class="text-xl font-bold">Cyber Class Event</h2>
-                    <p class="font-semibold text-amber-500 pt-2">Mentor oleh</p>
-                    <span class="font-semibold text-amber-500">{{ $featuredMentor->nama_mentor }}</span>
-                </div>
+                {{-- Loop untuk setiap mentor sebagai slide --}}
+                @foreach ($featuredMentors as $mentor)
+                    {{-- 
+                      Setiap slide akan muncul/hilang berdasarkan variabel 'activeMentorSlide'
+                      yang kita atur di layout/main.blade.php
+                    --}}
+                    <div x-show="activeMentorSlide === {{ $loop->iteration }}"
+                        x-transition:enter="transition ease-out duration-1000" x-transition:enter-start="opacity-0"
+                        x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-1000"
+                        x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+                        class="absolute inset-0" style="display: none;" {{-- Sembunyikan awalnya --}}>
 
-                <div class="absolute bottom-0 right-0 h-full w-1/2">
+                        {{-- Ini adalah kode banner Anda yang sudah ada --}}
+                        <div class="absolute left-0 top-0 h-full w-2/3 p-5 flex flex-col justify-center space-y-1">
+                            <p class="text-sm opacity-70">{{ $mentor->jadwal_dan_waktu }}</p>
+                            <h2 class="text-l font-bold">{{ $mentor->materi }}</h2>
+                            <p class="font-semibold text-amber-500 pt-2">Mentor oleh</p>
+                            <span class="font-semibold text-amber-500">{{ $mentor->nama_mentor }}</span>
+                        </div>
 
-                    <img src="{{ asset('images/' . $featuredMentor->gambar) }}" alt="{{ $featuredMentor->nama_mentor }}"
-                        class="absolute bottom-0 right-5 h-[110%] w-auto object-contain">
-                </div>
+                        <div class="absolute bottom-0 right-0 h-full w-1/2">
+                            <img src="{{ asset('images/mentors/' . $mentor->gambar) }}" alt="{{ $mentor->nama_mentor }}"
+                                class="absolute bottom-0 right-5 h-[110%] w-auto object-contain">
+                        </div>
+                    </div>
+                @endforeach
+                {{-- Akhir Loop --}}
+
             </div>
         @endif
     </div>

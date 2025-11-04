@@ -11,8 +11,14 @@
     <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 
-<body class="bg-gray-50 font-sans text-gray-800" x-data="{ searchQuery: '' }">
-
+<body class="bg-gray-100" x-data="{
+    searchQuery: '',
+    activeMentorSlide: 1
+}" {{-- Hanya jalankan timer jika ada mentor --}}
+    @if (isset($mentorCount) && $mentorCount > 0) x-init="setInterval(() => { 
+            {{-- Pindah ke slide berikutnya, atau kembali ke 1 jika sudah di akhir --}}
+            activeMentorSlide = (activeMentorSlide % {{ $mentorCount }}) + 1 
+        }, 5000)" {{-- Ganti 5000ms (5 detik) sesuai selera --}} @endif>
     {{-- HEADER --}}
     @unless (View::hasSection('hide_main_header'))
         @include('partials.header')

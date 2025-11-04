@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\DetailKeranjang;
 use App\Models\Mentor;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,11 +29,17 @@ class AppServiceProvider extends ServiceProvider
         });
 
         try {
-            $featuredMentor = Mentor::first();
+            // 1. Ambil SEMUA mentor
+            $featuredMentors = Mentor::all();
 
-            View::share('featuredMentor', $featuredMentor);
+            // 2. Kirim SEMUA mentor (plural)
+            View::share('featuredMentors', $featuredMentors);
+            // 3. Kirim JUMLAH mentor untuk logika timer
+            View::share('mentorCount', $featuredMentors->count());
         } catch (\Exception $e) {
-            View::share('featuredMentor', null);
+            // Tangani error jika database belum siap
+            View::share('featuredMentors', collect()); // Kirim koleksi kosong
+            View::share('mentorCount', 0); // Kirim jumlah 0
         }
     }
 }
