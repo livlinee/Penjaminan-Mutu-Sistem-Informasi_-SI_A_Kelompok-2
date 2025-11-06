@@ -45,7 +45,7 @@ Route::post('/admin/login', [AdminLoginController::class, 'login'])->name('admin
 Route::post('/admin/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 
 Route::middleware(['admin'])->group(function () {
-    
+
     // Halaman Dashboard
     Route::get('/admin/dashboard', [AdminController::class, 'dashboardIndex'])->name('dashboard');
 
@@ -57,7 +57,7 @@ Route::middleware(['admin'])->group(function () {
     Route::put('/admin/menu/{id}', [AdminController::class, 'menuUpdate'])->name('admin.menu.update');
     Route::delete('/admin/menu/{id}', [AdminController::class, 'menuDestroy'])->name('admin.menu.destroy');
     // ----------------------------------------
-    
+
     // --- GRUP ROUTE UNTUK MANAJEMEN MENTOR ---
     Route::get('/admin/mentor', [AdminController::class, 'mentorIndex'])->name('admin.mentor.index');
     Route::get('/admin/mentor/tambah', [AdminController::class, 'mentorCreate'])->name('admin.mentor.create');
@@ -66,5 +66,6 @@ Route::middleware(['admin'])->group(function () {
     Route::put('/admin/mentor/{id_mentor}', [AdminController::class, 'mentorUpdate'])->name('admin.mentor.update');
     Route::delete('/admin/mentor/{id_mentor}', [AdminController::class, 'mentorDestroy'])->name('admin.mentor.destroy');
     // ------------------------------------------
-
+    Route::get('/admin/transaksi', [AdminController::class, 'transaksiIndex'])->name('admin.transaksi.index');
+    Route::get('/admin/transaksi/export', [AdminController::class, 'transaksiExport'])->name('admin.transaksi.export');
 });

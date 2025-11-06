@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('admin.menu.index')" :active="request()->routeIs('admin.menu.index')" class="text-gray-700 hover:text-blue-600">
                         {{ __('Kelola Menu') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.transaksi.index')" :active="request()->routeIs('admin.transaksi.index')" class="text-gray-700 hover:text-blue-600">
+                        {{ __('Laporan Transaksi') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -57,6 +60,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.menu.index')" :active="request()->routeIs('admin.menu.index')">
                 {{ __('Kelola Menu') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.transaksi.index')" :active="request()->routeIs('admin.transaksi.index')">
+                {{ __('Laporan Transaksi') }}
             </x-responsive-nav-link>
         </div>
 

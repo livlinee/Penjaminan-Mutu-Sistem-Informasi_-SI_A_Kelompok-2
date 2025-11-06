@@ -28,7 +28,7 @@
 
                 {{-- Kanan: Gambar Wanita (Ganti src dengan gambar transparan Anda) --}}
                 <div class="hidden lg:block h-[400px] relative">
-                    <img src="https://placehold.co/400x500/png?text=Admin\n(Ganti+dengan+.png)" alt="Admin"
+                    <img src="{{ asset('images/mentors/Nur.png') }}" alt="Admin"
                         class="absolute bottom-0 right-0 h-[110%] w-auto object-contain">
                 </div>
             </div>

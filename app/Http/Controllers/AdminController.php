@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Menu;
 use App\Models\Mentor; // <-- 1. Tambahkan ini
 use Illuminate\Support\Facades\File; // <-- 1. Tambahkan ini untuk Hapus File
+use App\Models\Transaksi;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\TransaksiExport;
 
 class AdminController extends Controller
 {
@@ -45,11 +48,15 @@ class AdminController extends Controller
      */
     public function menuStore(Request $request)
     {
+        if ($request->input('rate_menu') === '') {
+            $request->merge(['rate_menu' => null]);
+        }
         $request->validate([
             'nama_menu' => 'required|string|max:100',
             'kategori' => 'required|string|in:Makanan,Minuman',
             'harga' => 'required|numeric|min:0',
             'deskripsi_menu' => 'required|string',
+            'rate_menu' => 'nullable|numeric|min:0|max:5', // Validasi ini sekarang benar
             'gambar_menu' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -65,7 +72,7 @@ class AdminController extends Controller
             'harga' => $request->harga,
             'deskripsi_menu' => $request->deskripsi_menu,
             'gambar_menu' => $imageName,
-            'rate_menu' => 0 // Set default rate
+            'rate_menu' => $request->input('rate_menu', 0)
         ]);
 
         return redirect()->route('admin.menu.index')->with('success', 'Menu baru berhasil ditambahkan.');
@@ -87,16 +94,21 @@ class AdminController extends Controller
      */
     public function menuUpdate(Request $request, $id)
     {
+        if ($request->input('rate_menu') === '') {
+            $request->merge(['rate_menu' => null]);
+        }
         $request->validate([
             'nama_menu' => 'required|string|max:100',
             'kategori' => 'required|string|in:Makanan,Minuman',
             'harga' => 'required|numeric|min:0',
             'deskripsi_menu' => 'required|string',
+            'rate_menu' => 'nullable|numeric|min:0|max:5',
             'gambar_menu' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $menu = Menu::findOrFail($id);
         $data = $request->only(['nama_menu', 'kategori', 'harga', 'deskripsi_menu']);
+        $data['rate_menu'] = $request->input('rate_menu', 0);
 
         if ($request->hasFile('gambar_menu')) {
             // Hapus gambar lama (jika bukan default)
@@ -222,5 +234,31 @@ class AdminController extends Controller
 
         $mentor->delete();
         return redirect()->route('admin.mentor.index')->with('success', 'Mentor berhasil dihapus.');
+    }
+    // ===================================
+    // --- LOGIKA LAPORAN TRANSAKSI ---
+    // ===================================
+
+    /**
+     * 2. Tambahkan method baru ini
+     * Menampilkan halaman laporan transaksi.
+     */
+    public function transaksiIndex()
+    {
+        // Ambil semua transaksi, urutkan dari terbaru
+        $transaksis = Transaksi::orderBy('created_at', 'desc')->get();
+
+        // Grup semua transaksi berdasarkan 'order_group_id'
+        // Ini akan mengelompokkan item-item yang dibeli bersamaan
+        $groupedTransactions = $transaksis->groupBy('order_group_id');
+
+        return view('admin.transaksi-index', [
+            'groupedTransactions' => $groupedTransactions
+        ]);
+    }
+    public function transaksiExport()
+    {
+        // Ini akan memanggil class TransaksiExport dan mengunduh filenya
+        return Excel::download(new TransaksiExport, 'laporan_transaksi_cyber_cafe.xlsx');
     }
 }
