@@ -6,7 +6,15 @@ Judul Project: Pemesanan Online Melalui QR Cafe
 4. Fullstack Developer = Syahril Ramadhan_F52123021
 5. Quality Assurance = Desak Damayanti_F52123004
 
-<h2>RANCANGAN UI/UX DI FIGMA</h2>
+<h2> 📅 Timeline Pengerjaan Project</h2>
+
+[Link Timeline](https://www.notion.so/37940922260b4c669efa3fd249a7fd6d?v=1b74a24e2abf49958b72a877fde69bc7&source=copy_link)
+
+<h2> 📃 Deskripsi Singkat terkait Sistem Informasi Pemesanan Online Melalui Barcode</h2>
+<p>Aplikasi yang akan dikembangkan merupakan sistem informasi berbasis web dengan nama Cyber Cafe, yang memungkinkan pelanggan memesan makanan dan minuman secara online melalui pemindaian barcode. Setelah memindai barcode di meja, pelanggan akan diarahkan ke halaman web tempat mereka bisa melihat menu, memilih pesanan, menambah ke keranjang, melakukan checkout, dan membayar secara tunai atau digital. <br> <br> Sistem ini juga menyediakan nota pembelian otomatis, serta fitur tambahan seperti informasi event kelas dan mentor yang diadakan oleh kafe. Di sisi lain, system admin memiliki panel khusus untuk mengelola menu, transaksi, laporan penjualan, dan event kelas. Aplikasi ini dibangun menggunakan framework Laravel, dengan database MySQL, dan antarmuka yang dibuat menggunakan Tailwind CSS dan Alpine.js agar tampilan responsif dan mudah digunakan baik di laptop maupun smartphone. Tujuan utamanya adalah meningkatkan efisiensi layanan kafe, mengurangi antrean, serta memberikan pengalaman pemesanan yang cepat, praktis, dan modern bagi pelanggan.</p> 
+
+
+<h2> 🎨 RANCANGAN UI/UX DI FIGMA</h2>
 <p align="center">
     <img height="400" alt="1" src="https://github.com/user-attachments/assets/16863889-ebc7-4dbb-ac02-4378dd891439" />
     <img height="400" alt="2" src="https://github.com/user-attachments/assets/0224d6dc-c69a-473a-8191-314e92b25b9c" />
