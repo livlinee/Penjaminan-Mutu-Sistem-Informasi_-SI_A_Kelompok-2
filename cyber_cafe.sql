@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2025 at 04:29 PM
+-- Generation Time: Nov 25, 2025 at 02:03 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,10 +40,7 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id_admin`, `username`, `password`, `nama_lengkap`) VALUES
 (1, 'lila', '6e2d835cfa02ef862fd32639c8fa395671de1f0752d5f703a922acaa5caa172d', 'Lila'),
-(2, 'cahya', '2d4c1751fe673826e62e07eb8f472c48d8577ba2b67503fb64738c35d9972fab', 'Cahya'),
-(3, 'syahril', 'ba94f22d4bc478edaf8568592e3331602d0e5b9ac83e5813999ac7fa0cdda218', 'Syahril'),
-(4, 'desak', 'c9c87dd7ad6e183e4b48ff95221ccff1e006cdd8b106cf8961b6f27cedefce33', 'Desak'),
-(5, 'nur', '03b16df8be06965941a0248a17f10f230219fb3c8d4d04471e6880fb1dfe1cdd', 'Nur');
+(6, 'tes', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'tes');
 
 -- --------------------------------------------------------
 
@@ -80,7 +77,16 @@ INSERT INTO `detail_keranjang` (`id_detail_keranjang`, `id_menu`, `jumlah_menu`,
 (30, 19, 1, 35000.00, 35000.00),
 (31, 14, 1, 80000.00, 80000.00),
 (32, 13, 1, 120000.00, 120000.00),
-(33, 13, 1, 120000.00, 120000.00);
+(33, 13, 1, 120000.00, 120000.00),
+(34, 13, 1, 120000.00, 120000.00),
+(35, 22, 1, 20000.00, 20000.00),
+(36, 30, 2, 40000.00, 40000.00),
+(37, 18, 1, 30000.00, 30000.00),
+(38, 26, 2, 160000.00, 160000.00),
+(39, 13, 1, 120000.00, 120000.00),
+(40, 13, 1, 120000.00, 120000.00),
+(41, 15, 1, 110000.00, 110000.00),
+(42, 25, 5, 600000.00, 600000.00);
 
 -- --------------------------------------------------------
 
@@ -103,10 +109,10 @@ CREATE TABLE `mentor` (
 
 INSERT INTO `mentor` (`id_mentor`, `nama_mentor`, `gambar`, `materi`, `jadwal_dan_waktu`, `kontak`) VALUES
 (1, 'Nur', 'Nur.png', 'Analisis dan Perancangan Sistem Informasi', 'Senin, 09.00-11.00', '081234567890'),
-(2, 'Cahya', 'cahya.jpg', 'Manajemen Basis Data dan Sistem Informasi', 'Selasa, 13.00-15.00', '082134567891'),
-(3, 'Syahril', 'syahril.jpg', 'Audit dan Keamanan Sistem Informasi', 'Rabu, 10.00-12.00', '083134567892'),
-(4, 'Desak', 'desak.jpg', 'Pemrograman Sistem Informasi Berbasis Web', 'Kamis, 14.00-16.00', '084134567893'),
-(5, 'Lila', 'nur.jpg', 'Perencanaan Strategis Sistem Informasi', 'Jumat, 08.00-10.00', '085134567894');
+(2, 'Cahya', '1762270781.png', 'Manajemen Basis Data dan Sistem Informasi', 'Selasa, 13.00-15.00', '082134567891'),
+(3, 'Syahril', '1762562426.png', 'Audit dan Keamanan Sistem Informasi', 'Rabu, 10.00-12.00', '083134567892'),
+(4, 'Desak', '1762404651.png', 'Pemrograman Sistem Informasi Berbasis Web', 'Kamis, 14.00-16.00', '084134567893'),
+(5, 'Lila', '1762270805.png', 'Perencanaan Strategis Sistem Informasi', 'Jumat, 08.00-10.00', '085134567894');
 
 -- --------------------------------------------------------
 
@@ -131,7 +137,7 @@ CREATE TABLE `menu` (
 INSERT INTO `menu` (`id_menu`, `nama_menu`, `gambar_menu`, `kategori`, `deskripsi_menu`, `harga`, `rate_menu`) VALUES
 (13, 'Spaghetti Chicken', 'spaghetti_chicken.jpeg', 'Makanan', 'Pasta lembut dengan ayam panggang dan saus spesial.', 120000.00, 4.80),
 (14, 'Roasted Chicken', 'roasted_chicken.jpeg', 'Makanan', 'Ayam panggang dengan bumbu khas dan sayuran segar.', 80000.00, 4.60),
-(15, 'Grilled Shrimp', 'grilled_shrimp.jpeg', 'Makanan', 'Udang bakar saus madu yang lezat dan gurih.', 110000.00, 4.70),
+(15, 'Grilled Shrimp', 'grilled_shrimp.jpeg', 'Makanan', 'Udang bakar saus madu yang lezat dan gurih.', 110000.00, 4.60),
 (16, 'Honey Grilled Chicken', 'honey_grilled_chicken.jpeg', 'Makanan', 'Ayam panggang madu dengan aroma menggoda.', 85000.00, 4.50),
 (17, 'Sate Lontong', 'sate_lontong.jpeg', 'Makanan', 'Sate ayam dengan lontong dan bumbu kacang khas.', 20000.00, 4.90),
 (18, 'Nasi Goreng', 'nasi_goreng.jpeg', 'Makanan', 'Nasi goreng spesial dengan telur mata sapi.', 30000.00, 4.80),
@@ -142,7 +148,7 @@ INSERT INTO `menu` (`id_menu`, `nama_menu`, `gambar_menu`, `kategori`, `deskrips
 (23, 'Mie Ayam', 'mie_ayam.jpeg', 'Makanan', 'Mie kenyal dengan ayam manis gurih.', 25000.00, 4.80),
 (24, 'Soto Ayam', 'soto_ayam.jpeg', 'Makanan', 'Soto ayam dengan kuah kuning gurih dan nasi.', 20000.00, 4.70),
 (25, 'Strawberry Vanila', 'strawberry_vanila.jpeg', 'Minuman', 'Minuman segar perpaduan stroberi dan vanila.', 120000.00, 4.90),
-(26, 'Matcha Vanila', 'matcha_vanila.jpeg', 'Minuman', 'Matcha lembut dengan campuran vanila yang nikmat.', 80000.00, 4.80),
+(26, 'Matcha Vanilaa', 'matcha_vanila.jpeg', 'Minuman', 'Matcha lembut dengan campuran vanila yang nikmat.', 80000.00, 4.80),
 (27, 'Expresso Coffee', 'expresso_coffee.jpeg', 'Minuman', 'Kopi espresso dengan aroma kuat dan rasa khas.', 30000.00, 4.60),
 (28, 'Lemon Ice', 'lemon_ice.jpeg', 'Minuman', 'Minuman es lemon segar pelepas dahaga.', 20000.00, 4.70),
 (29, 'Coffee Ice', 'coffee_ice.jpeg', 'Minuman', 'Kopi dingin dengan susu dan es batu.', 30000.00, 4.80),
@@ -174,10 +180,6 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id_transaksi`, `order_group_id`, `id_keranjang`, `total_transaksi`, `opsi_pembayaran`, `nama_pelanggan`, `nomor_meja`, `email`, `created_at`, `updated_at`) VALUES
-(1, NULL, 17, 80000.00, 'cash', 'Tes', 1, '', NULL, NULL),
-(2, NULL, 18, 110000.00, 'brizzi', 'lila', 9, '', NULL, NULL),
-(3, NULL, 19, 45000.00, 'cash', '3', 3, '', NULL, NULL),
-(4, NULL, 20, 20000.00, 'cash', '3', 3, '', NULL, NULL),
 (5, '3390 1830 3833', 21, 120000.00, 'ovo', 'Te', 2, '', NULL, NULL),
 (6, '1474 7395 3022', 22, 30000.00, 'cash', 'Tes', 5, '', '2025-10-24 09:19:36', '2025-10-24 09:19:36'),
 (7, '1474 7395 3022', 23, 35000.00, 'cash', 'Tes', 5, '', '2025-10-24 09:19:36', '2025-10-24 09:19:36'),
@@ -190,7 +192,15 @@ INSERT INTO `transaksi` (`id_transaksi`, `order_group_id`, `id_keranjang`, `tota
 (14, '5525 4756 6289', 30, 35000.00, 'cash', 'Kak nur', 6, 'mynameismadan4@gmail.com', '2025-10-28 07:13:59', '2025-10-28 07:13:59'),
 (15, '5578 7249 8118', 31, 80000.00, 'cash', 'Kak nur', 6, 'mynameismadan4@gmail.com', '2025-10-28 07:16:14', '2025-10-28 07:16:14'),
 (16, '2928 7562 4127', 32, 120000.00, 'gopay', 'Kak nur', 9, 'mynameismadan4@gmail.com', '2025-10-28 07:24:23', '2025-10-28 07:24:23'),
-(17, '9018 7408 7601', 33, 120000.00, 'cash', 'Kak nur', 9, 'mynameismadan4@gmail.com', '2025-10-28 07:28:17', '2025-10-28 07:28:17');
+(17, '9018 7408 7601', 33, 120000.00, 'cash', 'Kak nur', 9, 'mynameismadan4@gmail.com', '2025-10-28 07:28:17', '2025-10-28 07:28:17'),
+(18, '5513 5261 5302', 34, 120000.00, 'cash', 'ahmad', 22, 'main@gmail.com', '2025-10-30 17:06:27', '2025-10-30 17:06:27'),
+(19, '8487 9911 3619', 35, 20000.00, 'cash', 'Lila', 1, 'mynameissyahril4@gmail.com', '2025-10-31 18:35:42', '2025-10-31 18:35:42'),
+(20, '8487 9911 3619', 36, 40000.00, 'cash', 'Lila', 1, 'mynameissyahril4@gmail.com', '2025-10-31 18:35:42', '2025-10-31 18:35:42'),
+(21, '4034 3288 8617', 37, 30000.00, 'cash', 'Saril', 2, 'mynameissyahril4@gmail.com', '2025-10-31 19:02:47', '2025-10-31 19:02:47'),
+(23, '9159 7184 5525', 39, 120000.00, 'cash', '3', 1, 'halo@gmail.com', '2025-11-05 20:57:50', '2025-11-05 20:57:50'),
+(24, '7186 6285 5922', 40, 120000.00, 'cash', 'Kak nur', 9, 'mynameismadan4@gmail.com', '2025-11-08 22:17:40', '2025-11-08 22:17:40'),
+(25, '3467 8275 7430', 41, 110000.00, 'cash', '1', 1, 'mynameismadan4@gmail.com', '2025-11-20 03:45:30', '2025-11-20 03:45:30'),
+(26, '8104 4569 8772', 42, 600000.00, 'cash', 'eca', 2, 'eca@gmail.com', '2025-11-21 04:40:36', '2025-11-21 04:40:36');
 
 --
 -- Indexes for dumped tables
@@ -238,31 +248,31 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `detail_keranjang`
 --
 ALTER TABLE `detail_keranjang`
-  MODIFY `id_detail_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_detail_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `mentor`
 --
 ALTER TABLE `mentor`
-  MODIFY `id_mentor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_mentor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Constraints for dumped tables
